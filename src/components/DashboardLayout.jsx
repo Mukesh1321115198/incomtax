@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 const quickLinks = [
-  { icon: <ScrollText />, label: "e-Pay Tax" },
+  { icon: <ScrollText />, label: "-> e-Pay Tax" },
   { icon: <FileText />, label: "Suggestions for Simplification of IT Rules and Forms" },
   { icon: <FileText />, label: "DTVSV Scheme of 2024" },
   { icon: <SearchCheck />, label: "e-Verify Return" },
@@ -27,9 +27,9 @@ const quickLinks = [
 ];
 
 const slidingImages = [
+  "first.jpeg",
   "Bank.png",
-  "Bank.png",
-  "Bank.png",
+  "3rd.jpg",
 ];
 
 export default function DashboardLayout() {
@@ -48,7 +48,7 @@ export default function DashboardLayout() {
 
   return (
     <div className="flex flex-col md:flex-row p-4 gap-4">
-      <div className="w-full md:w-1/4 bg-gray-50 rounded shadow overflow-y-auto h-[500px]">
+      <div className="w-full md:w-1/4 bg-gray-50 rounded shadow overflow-y-auto h-[600px]">
         <h2 className="font-bold text-lg p-4 border-b border-blue-600 text-blue-800">
           Quick Links
         </h2>
@@ -147,39 +147,101 @@ export default function DashboardLayout() {
         </div>
 
         {/* Things to Know Section */}
-        <div>
-          <h2 className="font-bold text-lg border-b-4 border-blue-600 pb-1">
-            Things To Know
-          </h2>
-          <div className="mt-4">
-            <div className="flex gap-6 border-b pb-2 text-sm text-blue-700 font-medium">
-              <span className="border-b-2 border-blue-700">How to ... Videos</span>
-              <span>Awareness Videos</span>
-              <span>Brochures</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-              {["Benefits to Senior and Super Senior Citizen under Income Tax",
-                "Old Vs New Tax Regime (Part 1)",
-                "Old Vs New Tax Regime (Part 3)",
-                "Updated Income Tax Return (ITR U)"
-              ].map((title, index) => (
-                <div key={index} className="flex gap-2 items-start">
-                  <img
-                    src="video-thumb-placeholder.png"
-                    alt="video thumbnail"
-                    className="w-16 h-12 object-cover rounded shadow"
-                  />
-                  <a
-                    href="#"
-                    className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
-                  >
-                    {title}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+<div>
+  <h2 className="font-bold text-lg border-b-4 border-blue-600 pb-1">
+    Things To Know
+  </h2>
+  <div className="mt-4">
+    <div className="flex gap-6 border-b pb-2 text-sm text-blue-700 font-medium">
+      <span className="border-b-2 border-blue-700">How to ... Videos</span>
+      <span>Awareness Videos</span>
+      <span>Brochures</span>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+      {/* Video 1 */}
+      <div className="flex gap-2 items-start">
+        <iframe
+          className="w-40 h-24 rounded shadow"
+          src="https://www.youtube-nocookie.com/embed/jQJgL_NKL4g?hl=en"
+          title="Benefits to Senior and Super Senior Citizen under Income Tax"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <a
+          href="https://www.youtube.com/watch?v=jQJgL_NKL4g"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          Benefits to Senior and Super Senior Citizen under Income Tax
+        </a>
+      </div>
+
+      {/* Video 2 */}
+      <div className="flex gap-2 items-start">
+        <iframe
+          className="w-40 h-24 rounded shadow"
+          src="https://www.youtube-nocookie.com/embed/vZWwteoxR2w?hl=en"
+          title="Old Vs New Tax Regime (Part 1)"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <a
+          href="https://www.youtube.com/watch?v=vZWwteoxR2w"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          Old Vs New Tax Regime (Part 1)
+        </a>
+      </div>
+
+      {/* Video 3 */}
+      <div className="flex gap-2 items-start">
+        <iframe
+          className="w-40 h-24 rounded shadow"
+          src="https://www.youtube-nocookie.com/embed/t89TLaFnlHM?hl=en"
+          title="Old Vs New Tax Regime (Part 3)"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <a
+          href="https://www.youtube.com/watch?v=t89TLaFnlHM"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          Old Vs New Tax Regime (Part 3)
+        </a>
+      </div>
+
+      {/* Video 4 */}
+      <div className="flex gap-2 items-start">
+        <iframe
+          className="w-40 h-24 rounded shadow"
+          src="https://www.youtube-nocookie.com/embed/gkpT8ruFRRw?hl=en"
+          title="Updated Income Tax Return (ITR U)"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+        <a
+          href="https://www.youtube.com/watch?v=gkpT8ruFRRw"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          Updated Income Tax Return (ITR U)
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         {/* Our Success Enablers Section */}
         <div className="mt-8">
@@ -213,12 +275,11 @@ function ScrollingNotice() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const notices = [
-    "Form 3CEFC is now available for filing on the e-filing portal.",
-    "Updated returns for AYs 2021-22 and 2022-23 as per Finance Act, 2025 will be provided shortly.",
-    "Suggestions for simplification of Income Tax rules and forms are invited.",
-    "Form 3CEFC is now available for filing on the e-filing portal.",
-    "Updated returns for AYs 2021-22 and 2022-23 as per Finance Act, 2025 will be provided shortly.",
-    "Suggestions for simplification of Income Tax rules and forms are invited.",
+    "1. Form 10AB condonation request under Section 12A is now available for filing on the e-filing portal. Please refer Latest Updates for details.",
+    "2. Form 3CEFC is now available for filing on the e-filing portal. Please refer Latest Updates for details.",
+    "3. Facility for filing updated returns for the AYs 2021-22 and 2022-23 as per Finance Act, 2025 will be provided shortly.",
+    "4. Suggestions for Simplification of Income Tax rules and forms is invited from all stakeholders. Please navigate to Quick links to submit your suggestion.",
+    "5. Notice Inviting Tender (NIT) for selection of Managed Service Provider (MSP) for Insight 2.0. The format of all documents and other details are available with Tender ID:2024_DREV_838109_1 on the https://eprocure.gov.in/eprocure/app. Please refer ‘Latest Updates’ for detailed NIT.",
   ];
 
   useEffect(() => {
