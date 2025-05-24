@@ -77,7 +77,7 @@ const Footer = () => {
 
         {/* Emblem + Link */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="emblem" className="h-8" />
+          <img src="/india_.svg" alt="emblem" className="h-8" />
           <div>
             <span className="text-sm font-bold">india.gov.in</span>
             <p className="text-xs text-gray-300">national portal of india</p>
