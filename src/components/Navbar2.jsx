@@ -1,11 +1,5 @@
-import { useState } from "react";
-import {
-  Menu,
-  X,
-  ChevronRight,
-  ChevronDown,
-  Search,
-} from "lucide-react";
+import { useState, useRef } from "react";
+import { Menu, X, ChevronRight, ChevronDown, Search, Download } from "lucide-react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,6 +7,7 @@ export default function Navbar() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [searchVisible, setSearchVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const dropdownTimeoutRef = useRef(null); // For dropdown delay
 
   const navItems = [
     {
@@ -37,31 +32,40 @@ export default function Navbar() {
       submenu: [
         {
           name: "Domestic Company",
-          subOptions: ["Return Filing", "Tax Audit", "MAT Credit"],
+          subOptions: ["Guidance to file Tax Return", "Return/ Forms application to me", "Tax slabs ","Deductions on which I can get tax b..","Update my profile detials", "Downloads"],
         },
-        { name: "Foreign Company" },
+        { name: "Foreign Company",
+          subOptions: ["Guidance to file Tax Return", "Return/ Forms application to me", "Tax slabs ","Deductions on which I can get tax b..","Update my profile detials", "Downloads"],
+         },
       ],
     },
     {
       name: "Non-Company",
       submenu: [
         {
-          name: "LLP",
-          subOptions: ["Filing", "Compliance"],
+          name: "AOP/BOI/Trust/AJP",
+          subOptions: ["Guidance to file Tax Return", "Return/ Forms application to me", "Tax slabs ","Deductions on which I can get tax b..","Update my profile detials", "Downloads"],
         },
-        { name: "Trust" },
-        { name: "Society" },
+        { name: "Firm/LLP" ,
+          subOptions: ["Guidance to file Tax Return", "Return/ Forms application to me", "Tax slabs ","Deductions on which I can get tax b..","Update my profile detials", "Downloads"],
+        },
+        { name: "Local Authority",
+          subOptions: ["Guidance to file Tax Return", "Return/ Forms application to me", "Tax slabs ","Deductions on which I can get tax b..","Update my profile detials", "Downloads"],
+         },
       ],
     },
     {
       name: "Tax Professionals & Others",
       submenu: [
         {
-          name: "CA/Legal Practitioner",
-          subOptions: ["e-Verification", "Represent Case"],
+          name: "Chartered Accountants",
+          subOptions: ["Registration","Service Available"],
         },
-        { name: "Auditor" },
-        { name: "ERIs" },
+        { name: "e-Return Intermediaries",
+        
+          subOptions: ["Registration","Service Available"],
+         },
+        { name: "External",subOptions: ["Registration","Service Available"], },
       ],
     },
     { name: "Downloads" },
@@ -86,13 +90,21 @@ export default function Navbar() {
             <div
               key={item.name}
               className="relative group"
-              onMouseEnter={() => item.submenu && setActiveDropdown(item.name)}
+              onMouseEnter={() => {
+                clearTimeout(dropdownTimeoutRef.current);
+                if (item.submenu) setActiveDropdown(item.name);
+              }}
               onMouseLeave={() => {
-                setActiveDropdown(null);
-                setActiveSubmenu(null);
+                dropdownTimeoutRef.current = setTimeout(() => {
+                  setActiveDropdown(null);
+                  setActiveSubmenu(null);
+                }, 300); // Delay to prevent flickering
               }}
             >
-              <div className="flex items-center gap-1 cursor-pointer hover:underline underline-offset-4 transition duration-200">
+              <div
+                className="flex items-center gap-1 cursor-pointer hover:underline underline-offset-4 transition duration-200"
+                onClick={() => item.submenu && toggleDropdown(item.name)}
+              >
                 {item.name}
                 {item.submenu && <ChevronDown size={14} />}
               </div>
@@ -102,9 +114,16 @@ export default function Navbar() {
                   {item.submenu.map((sub) => (
                     <div
                       key={sub.name}
-                      onMouseEnter={() => sub.subOptions && setActiveSubmenu(sub.name)}
-                      onMouseLeave={() => sub.subOptions && setActiveSubmenu(null)}
                       className="relative group p-3 hover:bg-gray-100 flex justify-between items-center cursor-pointer"
+                      onMouseEnter={() => {
+                        clearTimeout(dropdownTimeoutRef.current);
+                        sub.subOptions && setActiveSubmenu(sub.name);
+                      }}
+                      onMouseLeave={() => {
+                        dropdownTimeoutRef.current = setTimeout(() => {
+                          setActiveSubmenu(null);
+                        }, 300);
+                      }}
                     >
                       {sub.name}
                       {sub.subOptions && <ChevronRight size={16} />}
@@ -129,7 +148,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Search Icon + Mobile Menu */}
+        {/* Search and Mobile Menu Toggle */}
         <div className="flex items-center gap-2">
           <button
             className="bg-[#007bdb] p-2 rounded"
@@ -147,13 +166,12 @@ export default function Navbar() {
       {searchVisible && (
         <div className="bg-[#fafbff] px-4 py-4 flex items-center justify-center gap-2">
           <input
-  type="text"
-  placeholder="Search any income tax related things"
-  value={searchText}
-  onChange={(e) => setSearchText(e.target.value)}
-  className="w-full md:w-[77%] border border-blue-600 p-3 rounded focus:outline-none text-gray-900 placeholder-gray-500"
-/>
-
+            type="text"
+            placeholder="Search any income tax related things"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="w-full md:w-[77%] border border-blue-600 p-3 rounded focus:outline-none text-gray-900 placeholder-gray-500"
+          />
           <button className="bg-[#2b3990] text-white px-6 py-3 rounded hover:bg-blue-800">
             Search
           </button>
