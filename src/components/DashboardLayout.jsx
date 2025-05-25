@@ -10,20 +10,29 @@ import {
 } from "lucide-react";
 
 const quickLinks = [
-  { icon: <ScrollText />, label: "-> e-Pay Tax" },
-  { icon: <FileText />, label: "Suggestions for Simplification of IT Rules and Forms" },
-  { icon: <FileText />, label: "DTVSV Scheme of 2024" },
-  { icon: <SearchCheck />, label: "e-Verify Return" },
-  { icon: <User />, label: "Verify PAN Status" },
-  { icon: <User />, label: "Know Tax Payment Status" },
-  { icon: <User />, label: "Instant E-PAN" },
-  { icon: <User />, label: "Know Your AO" },
-  { icon: <User />, label: "Verify Service Request" },
-  { icon: <User />, label: "Report Account Misuse" },
-  { icon: <User />, label: "Income Tax Calculator" },
-  { icon: <User />, label: "Know TAN Details" },
-  { icon: <Calendar />, label: "Tax Calendar" },
-  { icon: <FileText />, label: "Tax Information & Services" },
+  { icon: <ScrollText className="w-5" />, label: "-> e-Pay Tax" },
+  { icon: <FileText className="w-5" />, label: "Suggestions for Revamp of IT Act" },
+  { icon: <FileText className="w-5" />, label: "Suggestions for Simplification of IT Rules and Forms" },
+  { icon: <FileText className="w-5" />, label: "DTVSV Scheme of 2024" },
+  { icon: <SearchCheck className="w-5" />, label: "e-Verify Return" },
+  { icon: <User className="w-5" />, label: "Verify PAN Status" },
+  { icon: <User className="w-5" />, label: "Know Tax Payment Status" },
+  { icon: <User className="w-5" />, label: "Instant E-PAN" },
+  { icon: <User className="w-5" />, label: "Know Your AO" },
+  { icon: <User className="w-5" />, label: "Verify Service Request" },
+  { icon: <User className="w-5" />, label: "Report Account Misuse" },
+  { icon: <User className="w-5" />, label: "Income Tax Calculator" },
+  { icon: <User className="w-5" />, label: "Know TAN Details" },
+  { icon: <Calendar className="w-5" />, label: "Tax Calendar" },
+  { icon: <FileText className="w-5" />, label: "Tax Information & Services" },
+  { icon: <FileText className="w-5" />, label: "Download CSI File" },
+  { icon: <SearchCheck className="w-5" />, label: "Know your Refund Status" },
+  { icon: <FileText className="w-5" />, label: "Comply to Notice" },
+  { icon: <FileText className="w-5" />, label: "Submit Info on Tax Evasion or Benami Property" },
+  { icon: <User className="w-5" />, label: "Link Aadhaar Status" },
+  { icon: <User className="w-5" />, label: "Link Aadhaar" },
+  { icon: <SearchCheck className="w-5" />, label: "Authenticate Notice/Order Issued by ITD" },
+  { icon: <FileText className="w-5" />, label: "TDS on Cash Withdrawal" },
 ];
 
 const slidingImages = [
@@ -47,8 +56,16 @@ export default function DashboardLayout() {
   }, [isPaused]);
 
   return (
-    <div className="flex flex-col md:flex-row p-4 gap-4">
-      <div className="w-full md:w-1/4 bg-gray-50 rounded shadow overflow-y-auto h-[600px]">
+    <div className="flex flex-col md:flex-row p-4 gap-4"
+   
+      
+      style={{ marginRight: "135px" }} // Added right margin here
+    
+    
+    >
+      <div className="w-full md:w-1/4 bg-gray-50 rounded shadow overflow-y-auto h-[600px]"
+      style={{ marginLeft: "120px", marginRight: "30px" }} // ⬅️ Horizontal margin added here
+      >
         <h2 className="font-bold text-lg p-4 border-b border-blue-600 text-blue-800">
           Quick Links
         </h2>
@@ -146,11 +163,10 @@ export default function DashboardLayout() {
           ))}
         </div>
 
-        {/* Things to Know Section */}
+ {/* Things to Know Section */}
 <div>
-  <h2 className="font-bold text-lg border-b-4 border-blue-600 pb-1">
-    Things To Know
-  </h2>
+  <h2 className="font-bold text-lg border-b-4 border-blue-600 pb-1">Things To Know</h2>
+
   <div className="mt-4">
     <div className="flex gap-6 border-b pb-2 text-sm text-blue-700 font-medium">
       <span className="border-b-2 border-blue-700">How to ... Videos</span>
@@ -158,82 +174,94 @@ export default function DashboardLayout() {
       <span>Brochures</span>
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
       {/* Video 1 */}
-      <div className="flex gap-2 items-start">
-        <iframe
-          className="w-40 h-24 rounded shadow"
-          src="https://www.youtube-nocookie.com/embed/jQJgL_NKL4g?hl=en"
-          title="Benefits to Senior and Super Senior Citizen under Income Tax"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <div className="flex gap-4 items-start">
         <a
           href="https://www.youtube.com/watch?v=jQJgL_NKL4g"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          <img
+            src="/benefit-senior.png"
+            alt="Benefits to Senior and Super Senior Citizen"
+            className="w-40 h-20 object-cover rounded shadow hover:opacity-90 transition"
+          />
+        </a>
+        <a
+          href="https://www.youtube.com/watch?v=jQJgL_NKL4g"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium hover:text-blue-600"
         >
           Benefits to Senior and Super Senior Citizen under Income Tax
         </a>
       </div>
 
       {/* Video 2 */}
-      <div className="flex gap-2 items-start">
-        <iframe
-          className="w-40 h-24 rounded shadow"
-          src="https://www.youtube-nocookie.com/embed/vZWwteoxR2w?hl=en"
-          title="Old Vs New Tax Regime (Part 1)"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <div className="flex gap-4 items-start">
         <a
           href="https://www.youtube.com/watch?v=vZWwteoxR2w"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          <img
+            src="/benefit-senior.png"
+            alt="Old Vs New Tax Regime Part 1"
+            className="w-30 h-20 object-cover rounded shadow hover:opacity-90 transition"
+          />
+        </a>
+        <a
+          href="https://www.youtube.com/watch?v=vZWwteoxR2w"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium hover:text-blue-600"
         >
           Old Vs New Tax Regime (Part 1)
         </a>
       </div>
 
       {/* Video 3 */}
-      <div className="flex gap-2 items-start">
-        <iframe
-          className="w-40 h-24 rounded shadow"
-          src="https://www.youtube-nocookie.com/embed/t89TLaFnlHM?hl=en"
-          title="Old Vs New Tax Regime (Part 3)"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <div className="flex gap-4 items-start">
         <a
           href="https://www.youtube.com/watch?v=t89TLaFnlHM"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          <img
+            src="benefit-senior.png"
+            alt="Old Vs New Tax Regime Part 3"
+            className="w-30 h-20 object-cover rounded shadow hover:opacity-90 transition"
+          />
+        </a>
+        <a
+          href="https://www.youtube.com/watch?v=t89TLaFnlHM"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium hover:text-blue-600"
         >
           Old Vs New Tax Regime (Part 3)
         </a>
       </div>
 
       {/* Video 4 */}
-      <div className="flex gap-2 items-start">
-        <iframe
-          className="w-40 h-24 rounded shadow"
-          src="https://www.youtube-nocookie.com/embed/gkpT8ruFRRw?hl=en"
-          title="Updated Income Tax Return (ITR U)"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+      <div className="flex gap-4 items-start">
         <a
           href="https://www.youtube.com/watch?v=gkpT8ruFRRw"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-blue-800 font-medium underline hover:text-blue-600"
+        >
+          <img
+            src="/benefit-senior.png"
+            alt="Updated Income Tax Return (ITR U)"
+            className="w-30 h-20 object-cover rounded shadow hover:opacity-90 transition"
+          />
+        </a>
+        <a
+          href="https://www.youtube.com/watch?v=gkpT8ruFRRw"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-blue-800 font-medium hover:text-blue-600"
         >
           Updated Income Tax Return (ITR U)
         </a>
@@ -241,6 +269,7 @@ export default function DashboardLayout() {
     </div>
   </div>
 </div>
+
 
 
         {/* Our Success Enablers Section */}

@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { Menu, X, ChevronRight, ChevronDown, Search } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronRight,
+  ChevronDown,
+  Search,
+} from "lucide-react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   const navItems = [
     {
@@ -70,7 +78,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-6 items-center relative">
-          <div className="cursor-pointer hover:text-gray-200 border-b-2 border-transparent hover:border-white transition duration-200">
+          <div className="cursor-pointer hover:underline underline-offset-4 transition duration-200">
             Home
           </div>
 
@@ -78,19 +86,17 @@ export default function Navbar() {
             <div
               key={item.name}
               className="relative group"
-              onClick={() => item.submenu && toggleDropdown(item.name)}
               onMouseEnter={() => item.submenu && setActiveDropdown(item.name)}
               onMouseLeave={() => {
                 setActiveDropdown(null);
                 setActiveSubmenu(null);
               }}
             >
-              <div className="flex items-center gap-1 cursor-pointer hover:text-gray-200 border-b-2 border-transparent group-hover:border-white transition duration-200">
+              <div className="flex items-center gap-1 cursor-pointer hover:underline underline-offset-4 transition duration-200">
                 {item.name}
                 {item.submenu && <ChevronDown size={14} />}
               </div>
 
-              {/* Dropdown Menu */}
               {activeDropdown === item.name && item.submenu && (
                 <div className="absolute top-full left-0 mt-2 w-64 bg-white text-black shadow-lg rounded z-50">
                   {item.submenu.map((sub) => (
@@ -103,7 +109,6 @@ export default function Navbar() {
                       {sub.name}
                       {sub.subOptions && <ChevronRight size={16} />}
 
-                      {/* Sub-Sub Menu */}
                       {activeSubmenu === sub.name && sub.subOptions && (
                         <div className="absolute top-0 left-full ml-1 w-64 bg-gray-100 shadow-lg rounded z-50">
                           {sub.subOptions.map((opt) => (
@@ -124,16 +129,36 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Search and Mobile Menu Toggle */}
-        <div className="flex items-center md:hidden">
-          <button className="bg-[#007bdb] p-2 rounded">
+        {/* Search Icon + Mobile Menu */}
+        <div className="flex items-center gap-2">
+          <button
+            className="bg-[#007bdb] p-2 rounded"
+            onClick={() => setSearchVisible(!searchVisible)}
+          >
             <Search size={18} />
           </button>
-          <button onClick={() => setMenuOpen(!menuOpen)} className="ml-4">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
+
+      {/* Search Bar Section */}
+      {searchVisible && (
+        <div className="bg-[#fafbff] px-4 py-4 flex items-center justify-center gap-2">
+          <input
+  type="text"
+  placeholder="Search any income tax related things"
+  value={searchText}
+  onChange={(e) => setSearchText(e.target.value)}
+  className="w-full md:w-[77%] border border-blue-600 p-3 rounded focus:outline-none text-gray-900 placeholder-gray-500"
+/>
+
+          <button className="bg-[#2b3990] text-white px-6 py-3 rounded hover:bg-blue-800">
+            Search
+          </button>
+        </div>
+      )}
 
       {/* Mobile Menu */}
       {menuOpen && (
